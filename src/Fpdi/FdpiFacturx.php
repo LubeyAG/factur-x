@@ -161,7 +161,7 @@ class FdpiFacturx extends \setasign\Fpdi\Fpdi
             $this->_put('/Subtype /'.$file_info['subtype']);
         }
         $this->_put('/Type /EmbeddedFile');
-        if (@is_file($file_info['file'])) {
+        if (is_string($file_info['file']) && file_exists($file_info['file'])) {
             $fc = file_get_contents($file_info['file']);
         } else {
             $stream = $file_info['file']->getStream();
